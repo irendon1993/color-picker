@@ -22,157 +22,101 @@ import React, { Component } from 'react'
 //
 //
 // ALGORITHM
-class HueSlider extends Component {
+
+class App extends Component {
   state = {
     hueSliderValue: 25,
+    saturationSliderValue: 25,
+    lightSliderValue: 25,
   }
+
   updateHueSlider = event => {
-    console.log(event.target.value)
     this.setState({
       hueSliderValue: event.target.value,
     })
   }
 
-  render() {
-    return (
-      <div>
-        <h1>Change the colors</h1>
-        <div style={{ backgroundColor: `${this.state.color}` }}>
-          <input
-            type="range"
-            max="100"
-            onChange={this.updateHueSlider}
-            value={this.state.hueSliderValue}
-          />
-        </div>
-        <div>
-          <h3>Your Current Selection on the Slider</h3>
-          <p>{this.state.hueSliderValue}</p>
-        </div>
-      </div>
-    )
-  }
-}
-
-class SaturationSlider extends Component {
-  state = {
-    saturationSliderValue: 25,
-  }
   updateSaturationSlider = event => {
-    console.log(event.target.value)
     this.setState({
       saturationSliderValue: event.target.value,
     })
   }
 
-  render() {
-    return (
-      <div>
-        <h1>Change the colors</h1>
-        <div style={{ backgroundColor: `${this.state.color}` }}>
-          <input
-            type="range"
-            max="1-0"
-            onChange={this.updateSaturationSlider}
-            value={this.state.saturationSliderValue}
-          />
-        </div>
-        <div>
-          <h3>Your Current Selection on the Slider</h3>
-          <p>{this.state.saturationSliderValue}</p>
-        </div>
-      </div>
-    )
-  }
-}
-
-class LightSlider extends Component {
-  state = {
-    lightSliderValue: 25,
-  }
   updateLightSlider = event => {
-    console.log(event.target.value)
     this.setState({
       lightSliderValue: event.target.value,
     })
   }
 
-  render() {
-    return (
-      <div>
-        <h1>Change the colors</h1>
-        <div style={{ backgroundColor: `${this.state.color}` }}>
-          <input
-            type="range"
-            max="100"
-            onChange={this.updateLightSlider}
-            value={this.state.lightSliderValue}
-          />
-        </div>
-        <div>
-          <h3>Your Current Selection on the Slider</h3>
-          <p>{this.state.lightSliderValue}</p>
-        </div>
-      </div>
-    )
+  handleClick = () => {
+    this.setState({
+      hueSliderValue: Math.floor(Math.random() * 360),
+      saturationSliderValue: Math.floor(Math.random() * 100),
+      lightSliderValue: Math.floor(Math.random() * 100),
+    })
   }
-}
 
-class App extends Component {
-  state = {
-    // hueSliderValue: 25,
-    // saturationSliderValue: 25,
-  }
-  // updateHueSlider = event => {
-  //   console.log(event.target.value)
-  //   this.setState({
-  //     hueSliderValue: event.target.value,
-  //   })
-
-  // updateSaturationSlider = event => {
-  //   console.log(event.target.value)
-  //   this.setState({
-  //     hueSliderValue: event.target.value,
-  //   })
-
-  // updateLightSlider = event => {
-  //     console.log(event.target.value)
-  //     this.setState({
-  //       hueSliderValue: event.target.value,
-  //     })
-  // }
   render() {
+    console.log(Math.random())
+    const currentColor = `hsl(${this.state.hueSliderValue},${this.state.saturationSliderValue}%,${this.state.lightSliderValue}%)`
     return (
       <>
         <main>
-          <HueSlider />
-          <SaturationSlider />
-          <LightSlider />
-          {/* <div style={{ backgroundColor: `${this.state.color}` }}>
-            <input
-              type="range"
-              max="360"
-              onChange={this.updateSaturationSlider}
-              value={this.state.saturationSliderValue}
-            />
+          <div>
+            <figure style={{ backgroundColor: currentColor }}></figure>
+            <p>{currentColor}</p>
           </div>
           <div>
-            <h3>Your Current Selection on the Slider</h3>
-            <p>{this.state.saturationSliderValue}</p>
+            <button onClick={this.handleClick}> Random color </button>
           </div>
-
-          <div style={{ backgroundColor: `${this.state.color}` }}>
-            <input
-              type="range"
-              max="360"
-              onChange={this.updateLightSlider}
-              value={this.state.lightSliderValue}
-            />
-          </div> */}
-          {/* <div>
-            <h3>Your Current Selection on the Slider</h3>
-            <p>{this.state.lightSliderValue}</p>
-          </div> */}
+          <div>
+            <div>
+              <h1>Change the colors</h1>
+              <div>
+                <input
+                  type="range"
+                  max="360"
+                  onChange={this.updateHueSlider}
+                  value={this.state.hueSliderValue}
+                />
+              </div>
+              <div>
+                <h3>Your Current Selection on the Slider</h3>
+                <p>{this.state.hueSliderValue}</p>
+              </div>
+            </div>
+            <div>
+              <h1>Change the colors</h1>
+              <div>
+                <input
+                  type="range"
+                  max="100"
+                  onChange={this.updateSaturationSlider}
+                  value={this.state.saturationSliderValue}
+                />
+              </div>
+              <div>
+                <h3>Your Current Selection on the Slider</h3>
+                <p>{this.state.saturationSliderValue}</p>
+              </div>
+            </div>
+            <div>
+              <h1>Change the colors</h1>
+              <div>
+                <input
+                  type="range"
+                  max="100"
+                  onChange={this.updateLightSlider}
+                  value={this.state.lightSliderValue}
+                />
+              </div>
+              <div>
+                <h3>Your Current Selection on the Slider</h3>
+                <p>{this.state.lightSliderValue}</p>
+              </div>
+            </div>
+            ​
+          </div>
         </main>
       </>
     )
