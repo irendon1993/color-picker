@@ -1,29 +1,15 @@
 import React, { Component } from 'react'
 
 // PROBLEM
-
-// Represent the three values, hue, saturation, and lightness in your state.
-//
-// Add three sliders that update their respective values (hue, saturation, and lightness) in the state when changed.
-// Display the color on the screen, in both text (i.e. hsl(50, 8%, 20%)) and the actual color as a background color on an element.
-// Initialize the state to a random color when the page is loaded.
-// Add a button that picks a new random color.
-// In all cases, the sliders should be in the correct positions to represent the current color.
-//
-//
 // EXAMPLE
 //  hsl(50,8%,20%)
-
-// The first value hue is given in degrees (around a color wheel),
-// the second value is a percentage of saturation (0% being grey, 100% fully saturated),
-// and the third value, a percentage of lightness (0% black, 100% white).
-//
 // DATA
 //
 //
 // ALGORITHM
 
 class App extends Component {
+  // Initialize the state to a random color when the page is loaded.
   state = {
     hueSliderValue: 25,
     saturationSliderValue: 25,
@@ -57,7 +43,7 @@ class App extends Component {
   }
 
   render() {
-    console.log(Math.random())
+    // Represent the three values, hue, saturation, and lightness in your state.
     const currentColor = `hsl(${this.state.hueSliderValue},${this.state.saturationSliderValue}%,${this.state.lightSliderValue}%)`
     return (
       <>
@@ -67,6 +53,7 @@ class App extends Component {
             <p>{currentColor}</p>
           </div>
           <div>
+            {/* // Add a button that picks a new random color. */}
             <button onClick={this.handleClick}> Random color </button>
           </div>
           <div>
